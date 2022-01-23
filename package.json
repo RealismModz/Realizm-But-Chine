@@ -12,7 +12,8 @@
     "express": "^4.17.2",
     "mongodb": "^4.3.1",
     "mongoose": "^6.1.7",
-    "node": "^16.13.2"
+    "node": "^16.13.2",
+    "youtube-dl-wrap": "^2.1.1"
   },
   "devDependencies": {},
   "scripts": {

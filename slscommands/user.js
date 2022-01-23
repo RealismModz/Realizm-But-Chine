@@ -4,8 +4,7 @@ const {
 const {
     MessageEmbed
 } = require('discord.js')
-const config = require('../../config');
-const footer = config.footer.image;
+const config = require('../config');
 return [
     new SlashCommandBuilder().setName('user').setDescription('Replies with user info').addMentionableOption(option => option.setName('user').setDescription('User to provide information for')),
     async interaction => {
@@ -37,7 +36,7 @@ return [
 > ${(new Date(member.joinedAt)).toUTCString().split(' (').shift().trim()}
 > \`\`\`
 `, true)
-			.setFooter('Realizm Bot', footer)
+			.setFooter('Realizm Bot', config.image)
             ]
         })
     }
