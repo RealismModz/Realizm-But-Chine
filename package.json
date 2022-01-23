@@ -4,6 +4,10 @@
   "description": "Realizm bot",
   "main": "index.js",
   "dependencies": {
+    "@discordjs/builders": "^0.11.0",
+    "@discordjs/rest": "^0.2.0-canary.0",
+    "clear-module": "^4.1.2",
+    "discord-api-types": "^0.26.1",
     "discord.js": "^13.6.0",
     "express": "^4.17.2",
     "mongodb": "^4.3.1",

@@ -15,11 +15,6 @@ const client = new Discord.Client({
     ]
 });
 
-/* Api */
-const express = require("express");
-const app = express();
-require("./api/express.js")(express, app);
-
 const config = require("./config.json");
 
 /* Databse */
@@ -32,8 +27,13 @@ mongoose.connect(config.mongoose.url, {
   console.log("Database Online")
 });
 
+client.commands = new Discord.Collection();
+client.events = new Discord.Collection();
+client.slashCommands = new Discord.Collection();
+client.snipes = new Discord.Collection();
+
 ["command_handler", "event_handler", "slash_handler"].forEach(async handler => {
   require(`./handlers/${handler}`)(client, Discord);
 });
 
-client.login(config.bot.token);
+client.login(config.client.token);

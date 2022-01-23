@@ -8,7 +8,9 @@ module.exports = async(client, Discord) => {
       const event = require(`../events/${dirs}/${file}`);
       const event_name = file.split(".")[0];
 
-      bot.on(event_name, event.bind(null, Discord, client));
+      client.on(event_name, event.bind(null, Discord, client));
     };
   };
+
+    ['client', 'guild'].forEach(e => load_dir(e))
 };
