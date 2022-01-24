@@ -1,21 +1,9 @@
 const cooldowns = new Map();
 const config = require("../../config.json");
-const User = require("../../schemas/userSchema.js");
 
 module.exports = async (Discord, client, message, member) => {
   let prefix = config.client.prefix;
-  const user_check = await User.findOne({ userId: message.author.id });
-  if (!user_check || user_check == null) {
-    const userNig = await User.create({
-      userId: message.author.id,
-      xp: 0,
-      level: 0,
-      balance: 0,
-      bank: 100
-    });
-  }
-
-  const user = await User.findOne({userId: message.author.id})
+  
   if (!message.content.toLowerCase().startsWith(prefix) || message.author.bot) return;
 
   const args = message.content.slice(prefix.length).split(/ +/);
