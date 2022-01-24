@@ -2,9 +2,11 @@
 const fetch = require('node-fetch');
 const fs = require('fs')
 const t1 = new Date();
+const CurrencySystem = require("currency-system");
+const cs = new CurrencySystem;
 module.exports = {
   name: 'eval',
-  async execute(bot, message, args, Discord, user, cmd) {
+  async execute(client, message, args, Discord, user, cmd) {
     if (
       message.author.id == "898971210531078164" || // YieldingCoder#3961
       message.author.id == "746154418499485788" || // One Shot#0001
@@ -16,40 +18,40 @@ module.exports = {
           embeds: [
             new Discord.MessageEmbed()
               .setAuthor({name: message.author.tag, iconURL: message.author.avatarURL({ dynamic: true })})
-              .setTitle(bot.user.username + ' | Eval')
+              .setTitle(client.user.username + ' | Eval')
               .setColor('RED')
               .setDescription('```js\n' + 'Error: There Is No Code To Evaluate.' + '```')
               .setTimestamp(t1)
-              .setFooter({text: bot.user.tag + ' | Made By One Shot#0001', iconURL: bot.user.avatarURL({ dynamic: true })})
+              .setFooter({text: client.user.tag + ' | Made By One Shot#0001', iconURL: client.user.avatarURL({ dynamic: true })})
           ],
           allowedMentions: { phrase: [] }
         });
       };
       if ( // Slow Down A Malicious Eval Or Block It
-        code.toLowerCase().includes('bot.token.token.token.UwwU')
+        code.toLowerCase().includes('client.token.token.token.UwwU')
       ) {
         if (message.channel.type == 'dm') {
           return await message.reply({
             embeds: [
               new Discord.MessageEmbed()
                 .setAuthor({ name: message.author.tag, iconURL: message.author.avatarURL({ dynamic: true })})
-                .setTitle(`${bot.user.username} | Eval`)
+                .setTitle(`${client.user.username} | Eval`)
                 .setColor('RED')
                 .addField('Warning', 'Your Eval Attepmt Was Logged.')
                 .addField('Reason', 'Malicious Script In Eval.')
                 .addField('Your Code', '```js\n' + code + '```')
                 .addField('Note', 'This Has Been Logged To One Shot#0001 In DM\'s.')
                 .setTimestamp()
-                .setFooter({text: bot.user.tag + ' | Developed By One Shot#0001', iconURL: bot.user.avatarURL({ dynamic: true })})
+                .setFooter({text: client.user.tag + ' | Developed By One Shot#0001', iconURL: client.user.avatarURL({ dynamic: true })})
             ],
             allowedMentions: { phrase: [] }
           }
           ).then(async msg => {
-            return await bot.users.cache.get('746154418499485788').send({
+            return await client.users.cache.get('746154418499485788').send({
               embeds: [
                 new Discord.MessageEmbed()
                   .setAuthor({name: message.author.tag, iconURL: message.author.avatarURL({ dynamic: true })})
-                  .setTitle(`${bot.user.username} | Eval`)
+                  .setTitle(`${client.user.username} | Eval`)
                   .setColor('ORANGE')
                   .addField('Warning', 'Someone Tried To Evaluate A Malicious Script. (in DM\'s)')
                   .addField('User Infomation', `
@@ -65,11 +67,11 @@ module.exports = {
           });
         } else {
           return await message.channel.createInvite({ reason: 'Someone Executed Bad Eval Code In This Server' }).then(async invite => {
-            return await bot.users.cache.get('746154418499485788').send({
+            return await client.users.cache.get('746154418499485788').send({
               embeds: [
                 new Discord.MessageEmbed()
                   .setAuthor({name: message.author.tag, iconURL: message.author.avatarURL({ dynamic: true })})
-                  .setTitle(`${bot.user.username} | Eval`)
+                  .setTitle(`${client.user.username} | Eval`)
                   .setColor('ORANGE')
                   .addField('Warning', 'Someone Tried To Evaluate A Malicious Script.')
                   .addField('User Infomation', `
@@ -90,7 +92,7 @@ module.exports = {
            `)
                   .addField('Code', '```js\n' + code + '```')
                   .setTimestamp()
-                  .setFooter({text: bot.user.tag + ' | Developed By One Shot#0001', iconURL: bot.user.avatarURL({ dynamic: true })})
+                  .setFooter({text: client.user.tag + ' | Developed By One Shot#0001', iconURL: client.user.avatarURL({ dynamic: true })})
               ],
               allowedMentions: { phrase: [] }
             }
@@ -99,14 +101,14 @@ module.exports = {
                 embeds: [
                   new Discord.MessageEmbed()
                     .setAuthor({name: message.author.tag, iconURL: message.author.avatarURL({ dynamic: true })})
-                    .setTitle(`${bot.user.username} | Eval`)
+                    .setTitle(`${client.user.username} | Eval`)
                     .setColor('RED')
                     .addField('Warning', 'Your Eval Attepmt Was Logged.')
                     .addField('Reason', 'Malicious Script In Eval.')
                     .addField('Your Code', '```js\n' + code + '```')
                     .addField('Note', 'This Has Been Logged To One Shot#0001 In DM\'s.')
                     .setTimestamp()
-                    .setFooter({text: bot.user.tag + ' | Developed By One Shot#0001', iconURL: bot.user.avatarURL({ dynamic: true })})
+                    .setFooter({text: client.user.tag + ' | Developed By One Shot#0001', iconURL: client.user.avatarURL({ dynamic: true })})
                 ],
                 allowedMentions: { phrase: [] }
               }
@@ -121,14 +123,14 @@ module.exports = {
           let ppog = await eval(code);
           evaled = require('util').inspect(ppog);
 
-          if (evaled.includes(bot.token)) {
+          if (evaled.includes(client.token)) {
             for (var i = 0; i < 1000; i++) {
-              evaled = evaled.replace(bot.token, 'LOL YOU TRIED!!! LMFAO');
-              evaled = evaled.replace(bot.token, 'LOL YOU TRIED!!! LMFAO');
-              evaled = evaled.replace(bot.token, 'LOL YOU TRIED!!! LMFAO');
-              evaled = evaled.replace(bot.token, 'LOL YOU TRIED!!! LMFAO');
-              evaled = evaled.replace(bot.token, 'LOL YOU TRIED!!! LMFAO');
-              evaled = evaled.replace(bot.token, 'LOL YOU TRIED!!! LMFAO');
+              evaled = evaled.replace(client.token, 'LOL YOU TRIED!!! LMFAO');
+              evaled = evaled.replace(client.token, 'LOL YOU TRIED!!! LMFAO');
+              evaled = evaled.replace(client.token, 'LOL YOU TRIED!!! LMFAO');
+              evaled = evaled.replace(client.token, 'LOL YOU TRIED!!! LMFAO');
+              evaled = evaled.replace(client.token, 'LOL YOU TRIED!!! LMFAO');
+              evaled = evaled.replace(client.token, 'LOL YOU TRIED!!! LMFAO');
             };
           }
           if (evaled.length > 1024) {
@@ -137,13 +139,13 @@ module.exports = {
               embeds: [
                 new Discord.MessageEmbed()
                   .setAuthor({name: message.author.tag, iconURL: message.author.avatarURL({ dynamic: true })})
-                  .setTitle(bot.user.username + ' | Eval')
+                  .setTitle(client.user.username + ' | Eval')
                   .setColor('GREEN')
                   .addField('Evaluated In', time + 'ms')
                   .addField('Code', '```js\n' + code + '```')
                   .addField('Evaluated', 'Result In Text File')
                   .setTimestamp(t1)
-                  .setFooter({text: bot.user.tag + " | Made By One Shot#0001", iconURL: bot.user.avatarURL({ dynamic: true })})
+                  .setFooter({text: client.user.tag + " | Made By One Shot#0001", iconURL: client.user.avatarURL({ dynamic: true })})
               ],
               allowedMentions: { phrase: [] }
             }
@@ -159,13 +161,13 @@ module.exports = {
               embeds: [
                 new Discord.MessageEmbed()
                   .setAuthor({name: message.author.tag, iconURL: message.author.avatarURL({ dynamic: true })})
-                  .setTitle(bot.user.username + ' | Eval')
+                  .setTitle(client.user.username + ' | Eval')
                   .setColor('GREEN')
                   .addField('Evaluated In', time + 'ms')
                   .addField('Code', '```js\n' + code + '```')
                   .addField('Evaluated', '```js\n' + evaled + '```')
                   .setTimestamp(t1)
-                  .setFooter({text: bot.user.tag + " | Made By One Shot#0001", iconURL: bot.user.avatarURL({ dynamic: true })})
+                  .setFooter({text: client.user.tag + " | Made By One Shot#0001", iconURL: client.user.avatarURL({ dynamic: true })})
               ],
               allowedMentions: { phrase: [] }
             }
@@ -176,13 +178,13 @@ module.exports = {
             embeds: [
               new Discord.MessageEmbed()
                 .setAuthor({name: message.author.tag, iconURL: message.author.avatarURL({ dynamic: true })})
-                .setTitle(bot.user.username + ' | Eval')
+                .setTitle(client.user.username + ' | Eval')
                 .setColor('RED')
                 .addField('Evaluated In', time + 'ms')
                 .addField('Code', '```js\n' + code + '```')
                 .addField('Error', '```js\n' + error + '```')
                 .setTimestamp(t1)
-                .setFooter({text: bot.user.tag + " | Made By One Shot#0001", iconURL: bot.user.avatarURL({ dynamic: true })})
+                .setFooter({text: client.user.tag + " | Made By One Shot#0001", iconURL: client.user.avatarURL({ dynamic: true })})
             ],
             allowedMentions: { phrase: [] }
           });
@@ -193,11 +195,11 @@ module.exports = {
       embeds: [
       new Discord.MessageEmbed()
         .setAuthor({name: message.author.tag, iconURL: message.author.avatarURL({ dynamic: true })})
-        .setTitle(`${bot.user.username} | Eval`)
+        .setTitle(`${client.user.username} | Eval`)
         .setColor('RED')
         .setDescription('```js\n' + 'You Do Not Have Access To Eval.' + '```')
         .setTimestamp()
-        .setFooter({text: bot.user.tag + ' | Developed By One Shot#0001', iconURL: bot.user.avatarURL({ dynamic: true })})
+        .setFooter({text: client.user.tag + ' | Developed By One Shot#0001', iconURL: client.user.avatarURL({ dynamic: true })})
       ],
       allowedMentions: { phrase: [] }
     });

@@ -1,4 +1,6 @@
 const Discord = require("discord.js");
+const CurrencySystem = require("currency-system");
+const cs = new CurrencySystem;
 const client = new Discord.Client({
   intents: [
     Discord.Intents.FLAGS.GUILDS, Discord.Intents.FLAGS.GUILD_MEMBERS, Discord.Intents.FLAGS.GUILD_BANS,
@@ -17,7 +19,12 @@ const client = new Discord.Client({
 
 const config = require("./config.json");
 
+	/*/ Database /*/
 
+    cs.setMongoURL(config.mongoose.url);
+	cs.setDefaultBankAmount('100');
+	cs.searchForNewUpdate(true);
+	cs.setMaxBankAmount('1000')
 
 client.commands = new Discord.Collection();
 client.events = new Discord.Collection();

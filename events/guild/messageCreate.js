@@ -57,15 +57,14 @@ module.exports = async (Discord, client, message, member) => {
     "START_EMBEDDED_ACTIVITIES",
     "MODERATE_MEMBERS"
   ]
-
-  try {
+   try {
     if (command.permissions.length) {
       let invalidPerms = []
       for (const perm of command.permissions) {
         if (!validPermissions.includes(perm)) {
           return console.log(`Invalid Permissions ${perm}`);
         }
-        if (!message.member.hasPermission(perm)) {
+        if (!message.member.permissions.toArray().find(p => p == perm)) {
           invalidPerms.push(perm);
         }
       }
@@ -78,16 +77,13 @@ module.exports = async (Discord, client, message, member) => {
             .setColor('RED')
             .setDescription(`<@${message.author.id}> You Are Missing The Permissions \`${invalidPerms}\` To Execute This Command`)
             .setTimestamp()
-            .setFooter(client.user.tag + " | Made By One Shot#0001", bot.user.avatarURL({ dynamic: true }))
+            .setFooter(client.user.tag + " | Made By One Shot#0001", client.user.avatarURL({ dynamic: true }))
           ],
           allowedMentions: { phrase: [] }
         });
       }
     }
-  } catch (err) {
-
-  }
-
+} catch (e) { }
   try {
     if (command.botPermissions.length) {
       let invalidPerms = []
@@ -95,7 +91,7 @@ module.exports = async (Discord, client, message, member) => {
         if (!validPermissions.includes(perm)) {
           return console.log(`Invalid Permissions ${perms}`);
         }
-        if (!message.guild.members.cache.get(client.user.id).hasPermission(perm)) {
+        if (!message.guild.members.cache.get(client.user.id).permissions.toArray().find(p => p == perm)) {
           invalidPerms.push(perm);
         }
       }
@@ -108,7 +104,7 @@ module.exports = async (Discord, client, message, member) => {
             .setColor('RED')
             .setDescription(`<@${message.author.id}> I'm Missing The Permissions \`${invalidPerms}\` To Execute This Command`)
             .setTimestamp()
-            .setFooter(bot.user.tag + " | Made By One Shot#0001", bot.user.avatarURL({ dynamic: true }))
+            .setFooter(bot.user.tag + " | Made By One Shot#0001", client.user.avatarURL({ dynamic: true }))
         ],
           allowedMentions: { phrase: [] }
         });
