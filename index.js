@@ -17,7 +17,7 @@ const client = new Discord.Client({
 
 const config = require("./config.json");
 
-/* Databse */
+/* Database */
 const mongoose = require('mongoose');
 
 mongoose.connect(config.mongoose.url, {

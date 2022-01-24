@@ -1,9 +1,21 @@
 const cooldowns = new Map();
 const config = require("../../config.json");
+const User = require("../../schemas/userSchema.js");
 
-module.exports = async (Discord, bot, message) => {
+module.exports = async (Discord, client, message, member) => {
   let prefix = config.client.prefix;
+  const user_check = await User.findOne({ userId: message.author.id });
+  if (!user_check || user_check == null) {
+    const userNig = await User.create({
+      userId: message.author.id,
+      xp: 0,
+      level: 0,
+      balance: 0,
+      bank: 100
+    });
+  }
 
+  const user = await User.findOne({userId: message.author.id})
   if (!message.content.toLowerCase().startsWith(prefix) || message.author.bot) return;
 
   const args = message.content.slice(prefix.length).split(/ +/);
@@ -141,6 +153,6 @@ module.exports = async (Discord, bot, message) => {
   time_stamps.set(message.author.id, current_time);
   setTimeout(() => time_stamps.delete(message.author.id), cooldown_amount);
   try {
-    if (command) command.execute(client, message, args, Discord, cmd);
+    if (command) command.execute(client, message, args, Discord, user, cmd);
   } catch (err) { }
 };
