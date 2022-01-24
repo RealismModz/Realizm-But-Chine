@@ -12,8 +12,6 @@ module.exports = {
 	],
 	cooldown: 1,
 	async execute(client, message, args, Discord, cmd) {
-		const User = require('../schemas/userSchema');
-
-		console.log(User.findOne({ userId: message.author.id }));
+		
 	}
 }

@@ -17,15 +17,7 @@ const client = new Discord.Client({
 
 const config = require("./config.json");
 
-/* Database */
-const mongoose = require('mongoose');
 
-mongoose.connect(config.mongoose.url, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-}, async() => {
-  console.log("Database Online")
-});
 
 client.commands = new Discord.Collection();
 client.events = new Discord.Collection();

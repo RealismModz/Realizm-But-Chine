@@ -2,7 +2,6 @@
 const fetch = require('node-fetch');
 const fs = require('fs')
 const t1 = new Date();
-const User = require("../schemas/userSchema.js")
 module.exports = {
   name: 'eval',
   async execute(bot, message, args, Discord, user, cmd) {
