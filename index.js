@@ -34,5 +34,5 @@ client.snipes = new Discord.Collection();
 ["command_handler", "event_handler", "slash_handler"].forEach(async handler => {
   require(`./handlers/${handler}`)(client, Discord);
 });
-
+ process.on("unhandledRejection", _ => console.error(_.stack + '\n' + '='.repeat(20)));
 client.login(config.client.token);
