@@ -6,22 +6,34 @@
   "dependencies": {
     "@discordjs/builders": "^0.11.0",
     "@discordjs/rest": "^0.2.0-canary.0",
+    "body-parser": "^1.19.1",
     "clear-module": "^4.1.2",
     "currency-system": "^2.6.47",
     "discord-api-types": "^0.26.1",
     "discord.js": "^13.6.0",
+    "ejs": "^3.1.6",
     "express": "^4.17.2",
+    "express-session": "^1.17.2",
+    "hcaptcha": "^0.1.1",
     "mongodb": "^4.3.1",
-    "mongoose": "^6.1.7",
+    "mongoose": "^6.1.8",
     "node": "^16.13.2",
     "node-fetch": "^2.6.7",
+    "passport": "^0.5.2",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^6.1.0",
+    "pug": "^3.0.2",
     "random-hex": "^1.0.2",
     "youtube-dl-wrap": "^2.1.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "browser-sync": "^2.27.7",
+    "nodemon": "^2.0.15"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ."
+    "start": "node .",
+    "dev": "nodemon ./index.js"
   },
   "author": "One Shot",
   "license": "ISC"

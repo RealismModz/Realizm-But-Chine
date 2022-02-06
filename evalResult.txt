@@ -1,17 +1,17 @@
 <ref *1> Message {
   channelId: '934547474645909544',
   guildId: '929210013212377108',
-  id: '935070065596960808',
-  createdTimestamp: 1643008476400,
-  type: 'REPLY',
+  id: '935274853626441780',
+  createdTimestamp: 1643057301671,
+  type: 'DEFAULT',
   system: false,
-  content: 'Please message a member!',
+  content: 'PRETTY GAY IF YOU ASK ME!!!',
   author: ClientUser {
     id: '933099674192216144',
     bot: true,
     system: false,
     flags: UserFlags { bitfield: 0 },
-    username: 'kill the jews.',
+    username: 'RealizmBot',
     discriminator: '2948',
     avatar: 'a0d943047477106fb0491d91879deb79',
     banner: undefined,
@@ -30,32 +30,18 @@
   reactions: ReactionManager { message: [Circular *1] },
   mentions: MessageMentions {
     everyone: false,
-    users: Collection(1) [Map] { '746154418499485788' => [User] },
+    users: Collection(0) [Map] {},
     roles: Collection(0) [Map] {},
     _members: null,
     _channels: null,
     crosspostedChannels: Collection(0) [Map] {},
-    repliedUser: User {
-      id: '746154418499485788',
-      bot: false,
-      system: false,
-      flags: [UserFlags],
-      username: 'One Shot',
-      discriminator: '0001',
-      avatar: 'fcb0a574cc831f5b0727727122f2d611',
-      banner: undefined,
-      accentColor: undefined
-    }
+    repliedUser: null
   },
   webhookId: null,
   groupActivityApplication: null,
   applicationId: null,
   activity: null,
   flags: MessageFlags { bitfield: 0 },
-  reference: {
-    channelId: '934547474645909544',
-    guildId: '929210013212377108',
-    messageId: '935070064548397066'
-  },
+  reference: null,
   interaction: null
 }
